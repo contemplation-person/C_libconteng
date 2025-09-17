@@ -53,7 +53,7 @@ static inline void cleanup_free(void *p) {
 /**
  * @brief A  declared with  will be automatically freed when the function ends, so returning it leads to a use-after-free bug. To safely return a pointer, declare it without the cleanup attribute.
  */
-#define smart_ptr(ptr) void* ptr __attribute__((cleanup(cleanup_free)))
+#define smart_ptr(ptr) void* __attribute__((cleanup(cleanup_free))) ptr
 #define new_mem(size) malloc(size)
 #define new_str(str) strdup(str)
 
